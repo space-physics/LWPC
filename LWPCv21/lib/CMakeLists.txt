@@ -44,3 +44,10 @@ xc_add.for xc_mdhnkl.for xc_norme.for
 xlineq.for
 )
 
+target_compile_options(lwpc PRIVATE 
+                      -std=legacy
+                      -fdollar-ok  # lwpc_geo.cmn
+                      -fdec-structure  # geo_coast_map.for
+                      -fno-align-commons
+                      )
+

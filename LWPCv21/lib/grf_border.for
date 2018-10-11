@@ -46,7 +46,7 @@ c  Change History:
 
 c*******************!***************************************************
 
-      character*  1 null/z0/
+      character, parameter :: null = char(0)
       character*  8 frmt
       character* 40 number
       character* 41 string

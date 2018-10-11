@@ -184,4 +184,4 @@ c           NOTE: only the frequency and location must match
       end if
       RETURN
       END      ! DECODE_TX_DATA
-
+

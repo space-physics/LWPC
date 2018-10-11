@@ -11,4 +11,3 @@ c     LWPC file locations common block definitions
      &              lwpcLOG_loc, lwpcINP_loc, lwpcXtr_loc,
      &              lwpcLWT_loc, lwpcNOI_loc
 
-
