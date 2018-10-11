@@ -1,0 +1,1 @@
+sys_print_begin.c(81): Warning! W131: No prototype found for function 'sys_error_message'
