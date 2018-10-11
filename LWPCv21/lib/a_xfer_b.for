@@ -17,4 +17,3 @@ c     Transfers amp1 and sig1 to amp2 and sig2
 
       RETURN
       END      ! A_XFER_B
-
