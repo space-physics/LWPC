@@ -163,7 +163,7 @@ c           Mercator or Rectangular
             size  _lon=value5
             size  _lat=value6
 
-         OTHERWISE
+         case default
 
 c           Unidentified projection
             write(error_msg,
@@ -302,7 +302,7 @@ c           Mercator
             size  _lon=list(5)
             size  _lat=list(6)
 
-         OTHERWISE
+         case default
 
 c           Unidentified projection
             write(error_msg,
@@ -383,7 +383,7 @@ c              Rectangular or Mercator
                   call LWPC_ERROR ('ERROR', error_msg)
                end if
 
-            OTHERWISE
+            case default
 
 c              Unidentified projection
                write(error_msg,
