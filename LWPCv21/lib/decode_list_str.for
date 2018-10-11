@@ -39,9 +39,10 @@ c  Change history:
 c*******************!***************************************************
 
       character*(*) data_string
-      character*120 item,null/z0/
+      character*120 item
       character*200 error_msg
       character*(*) list(mxlist)
+      character, parameter :: null=char(0)
       integer       str_length
 
 
@@ -65,4 +66,4 @@ c*******************!***************************************************
 
       RETURN
       END      ! DECODE_LIST_STR
-
+

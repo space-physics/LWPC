@@ -2,9 +2,12 @@ cmake_minimum_required (VERSION 3.7)
 project(LWPC Fortran C)
 enable_testing()
 
+include_directories(../include)
+
 add_library(lwpc 
 almnac.for a_over_b.for a_plus_b.for a_xfer_b.for 
-clineq.for close_fordrive.for 
+clineq.for 
+# close_fordrive.for 
 decode_a_noise.for decode_control_data.for decode_date.for decode_file_name.for decode_ionosphere.for decode_list_flt.for decode_list_int.for decode_list_str.for decode_map_area.for decode_op_area.for decode_plotter.for decode_rx_data.for decode_time.for decode_tx_data.for 
 erfc.for 
 flush_unit.for 
