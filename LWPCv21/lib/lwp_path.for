@@ -316,4 +316,4 @@ c           the bearing here is 540-bearing at the transmitter
 
       RETURN
       END      ! LWP_PATH
-
+

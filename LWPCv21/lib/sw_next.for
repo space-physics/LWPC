@@ -49,4 +49,4 @@ c nsgmnt         index of current segment
 
       RETURN
       END      ! SW_NEXT
-
+

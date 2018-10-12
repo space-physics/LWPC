@@ -35,9 +35,8 @@ c     08 May 96     Added test for TAB character.
 c*******************!***************************************************
 
       character*(*) string
-      character*  1 TAB
+      character, parameter :: TAB=char(9)
       integer       str_length,first_character,last_character
-      data          TAB/z9/
 
 
       if (first_character .eq. 0) then

@@ -16,7 +16,7 @@ geo_border.for geo_cgm.for geo_chi_map.for geo_cntr.for geo_coast_map.for geo_co
 get_command_line.for get_date.for get_delimiter.for get_map.for get_opa.for get_random.for get_time.for get_xmtr.for 
 grf_begin.for grf_border.for grf_cntr_cell.for grf_cntr_col.for grf_cntr_edge.for grf_cntr_fill.for grf_cntr_flag.for grf_cntr.for grf_cntr_holes.for grf_cntr_join.for grf_cntr_line.for grf_cntr_row.for grf_cntr_search.for grf_cntr_trace.for grf_color.for grf_curve.for grf_done.for grf_draw.for grf_fill_index.for grf_fill_rect.for grf_limits.for grf_move.for grf_number.for grf_origin.for grf_poly_fill.for grf_string.for grf_symbol.for 
 ground.for 
-hpgl_begin.for hpgl_color.for hpgl_done.for hpgl_draw.for hpgl_fill_rect.for hpgl_poly_fill.for hpgl_string.for 
+# hpgl_begin.for hpgl_color.for hpgl_done.for hpgl_draw.for hpgl_fill_rect.for hpgl_poly_fill.for hpgl_string.for 
 hrs_to_hhmm.for 
 land_sea.for leap_year.for 
 lw_fast_mc.for lw_full_mc.for lw_htgain.for 

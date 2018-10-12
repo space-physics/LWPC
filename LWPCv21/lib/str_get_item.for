@@ -39,10 +39,10 @@ c     08 May 96     Added test for TAB character.
 c*******************!***************************************************
 
       character*(*) string,item
-      character*  1 TAB
+      character, parameter :: TAB = char(9)
       character*256 temporary
       integer       str_length,first_character,last_character
-      data          TAB/z9/
+
 
 
 c     Get dimension of the strings

@@ -1,5 +1,3 @@
-c$pragma aux Sys_string "*_" parm (value)
-
       SUBROUTINE GRF_STRING
      &          (xx,yy,height,string,angle,justify,retX)
 
@@ -54,7 +52,7 @@ c*******************!***************************************************
       character* 2  justify
       character*(*) string
 
-      character*  1 null/z0/
+      character, parameter :: null = char(0)
       character*121 xstring
       character*200 error_msg
       integer       str_length

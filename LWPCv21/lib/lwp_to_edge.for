@@ -160,4 +160,4 @@ c           Op area is not a strip
 
       RETURN
       END      ! LWP_TO_EDGE
-
+

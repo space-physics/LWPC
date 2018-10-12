@@ -1,4 +1,3 @@
-c$pragma aux sys_error_message "*_"
 
       SUBROUTINE LWPC_ERROR
      &          (error_type,error_msg)
@@ -49,7 +48,7 @@ c     LWPC parameters
       include      'lwpc_lun.cmn'
 
 c     Get sys error defintions
-      INCLUDE      'sysStrct.cmn'
+      INCLUDE      'sysstrct.cmn'
       INCLUDE      'graphics.cmn'
 
       character*(*) error_type
@@ -97,4 +96,4 @@ c           This is a fatal ERROR, force termination with a trace back
 
       RETURN
       END      ! LWPC_ERROR
-
+

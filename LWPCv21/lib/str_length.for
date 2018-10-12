@@ -32,9 +32,8 @@ c     08 May 96     Added test for TAB character.
 c*******************!***************************************************
 
       character     string*(*)
-      character*  1 TAB
+      character, parameter :: TAB = char(9)
       integer       str_length
-      data          TAB/z9/
 
 
 c     Check if string is defined

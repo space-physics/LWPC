@@ -20,4 +20,4 @@ c***********************************************************************
      &              sys_error_msg,sys_error_level,hwnd,
      &              sys_szClientClass,program_type,next_graph
 
-
+
