@@ -8,7 +8,7 @@ c     LWPC parameters
       integer       str_length
 
 c     Get the location of the LWPC data
-      open (lwpcDAT_lun,file='C:\lwpcDAT.loc',status='old',err=900)
+      open (lwpcDAT_lun,file='../lwpcDAT.loc',status='old',err=900)
       read (lwpcDAT_lun,'(a)') lwpcDAT_loc
       close(lwpcDAT_lun)
 c     Get delimiters used in the file names
@@ -21,5 +21,5 @@ c     Ensure lwpcDAT_loc is properly terminated
       end if
       RETURN
 
-900   call LWPC_ERROR ('Error','Could not open C:\lwpcDAT.loc')
+900   call LWPC_ERROR ('Error','Could not open lwpcDAT.loc')
       END      ! LWPC_DAT_LOC

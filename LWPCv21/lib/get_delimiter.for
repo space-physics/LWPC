@@ -1,5 +1,4 @@
-      SUBROUTINE GET_DELIMITER
-     &          (delimiter)
+      SUBROUTINE GET_DELIMITER(delimiter)
 
 c***********************************************************************
 c                   subroutine get_delimiter
@@ -41,7 +40,7 @@ c  Change history:
 
 c*******************!***************************************************
 
-      character*  1 delimiter(3)
+      character, intent(out) :: delimiter(3)
 
 
 c     Delimiters for VMS:
@@ -50,14 +49,13 @@ c     delimiter(2)='['
 c     delimiter(3)=']'
 
 c     Delimiters for DOS & OS/2:
-      delimiter(1)=':'
-      delimiter(2)='\'
-      delimiter(3)='\'
+!      delimiter(1)=':'
+!      delimiter(2)='\'
+!      delimiter(3)='\'
 
 c     Delimiters for Unix:
-c     delimiter(1)=' '
-c     delimiter(2)='/'
-c     delimiter(3)='/'
+      delimiter(1)=' '
+      delimiter(2)='/'
+      delimiter(3)='/'
 
-      RETURN
       END      ! GET_DELIMITER

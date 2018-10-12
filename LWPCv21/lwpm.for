@@ -759,30 +759,24 @@ c     Programmer selectable
      &              dist_avg/.false./,
      &              nrlwf/1/
 
-      character* 40 CMDList(5)
-      character*120 CMDLine
-
 c     Get the location of the LWPC data
       call LWPC_DAT_LOC
 
-c     Get the command line
-      call GET_COMMAND_LINE (LenCMD,CMDLine)
 
-c     CMDLine now contains the arguments of the command line. For this
-c     program we assume that there is only the input file name.
+c     For this program we assume that there is only the input file name.
+      lencmd = command_argument_count()
       if (LenCMD .eq. 0) then
-         file_name='lwpm'
+         file_name='../lwpm'
       else
-         call DECODE_LIST_STR (CMDLine,5,NrCMD,CMDList)
-         file_name=CMDList(1)
+         call get_command_argument(1, file_name)
       end if
-      nf=STR_LENGTH(file_name)
+      nf=len_trim(file_name)
 
       file_name(nf+1:nf+4)='.inp'
-      OPEN (lwpcINP_lun,file=file_name,status='old')
+      OPEN (lwpcINP_lun, file=file_name, status='old')
 
       file_name(nf+1:nf+4)='.log'
-      OPEN (lwpcLOG_lun,file=file_name,status='unknown')
+      OPEN (lwpcLOG_lun, file=file_name, status='unknown')
 
 c     Initialize character strings
       xmtr_id='    '
@@ -878,7 +872,7 @@ c           followed by creation of a mode sum and op area grid file
       end if
 
 c     Length of the root file name
-      nfchr=STR_LENGTH(root_file)
+      nfchr=len_trim(root_file)
 
 c     Get bearing angles
       rng_mx=range_max
@@ -1340,7 +1334,7 @@ c     Error exits
      &    '(/''ERROR: '',
      &       ''I/O error '',i3,'' occurred trying to open '',
      &       ''file: '',a)')
-     &         iocheck,file_name(:STR_LENGTH(file_name))
+     &         iocheck,file_name(:len_trim(file_name))
 
       END      ! LWPM
 

@@ -1,5 +1,4 @@
-      FUNCTION   STR_LENGTH
-     &          (string)
+      FUNCTION   STR_LENGTH(string)
 
 c***********************************************************************
 c                         subroutine str_length
@@ -51,5 +50,4 @@ c        Count the number of characters in the string
          if (str_length .gt. 0) go to 10
       end if
 
-      RETURN
       END      ! STR_LENGTH
