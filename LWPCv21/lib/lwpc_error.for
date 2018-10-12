@@ -72,8 +72,8 @@ c            0 defines an informational message only
              sys_error_level=0
          end if
 
-         sys_error_msg=error_msg(:STR_LENGTH(error_msg))
-         call SYS_ERROR_MESSAGE
+         error stop error_msg(:STR_LENGTH(error_msg))
+ 
       else
 
 c        This is a text based program;
@@ -90,10 +90,10 @@ c           This is a fatal ERROR, force termination with a trace back
             temp=1.
             result=LOG(-1.*temp)
             CLOSE(lwpcLOG_lun)
-            STOP
+            error STOP
          end if
       end if
 
-      RETURN
+
       END      ! LWPC_ERROR
 

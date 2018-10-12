@@ -1,5 +1,4 @@
-      SUBROUTINE GET_RANDOM
-     &          (seed,ranval)
+      SUBROUTINE GET_RANDOM(seed,ranval)
 
 c***********************************************************************
 c                         subroutine get_random
@@ -32,18 +31,9 @@ c  Change History:
 
 c*******************!***************************************************
 
-      integer       seed
-      real          ranval
+      integer, intent(in) :: seed
+      real, intent(out) ::   ranval
 
+      call random_number(ranval)
 
-c     WATCOM specific code
-      ranval=URAND(SEED)
-c     WATCOM specific code
-
-c     SUN SOLARIS specific code
-c     Likes a large seed!
-c     ranval=RAN (SEED * 1738)
-c     SUN SOLARIS specific code
-
-      RETURN
       END      ! GET_RANDOM

@@ -1,5 +1,4 @@
-      SUBROUTINE GET_TIME
-     &          (ihr,imn,isc)
+      SUBROUTINE GET_TIME(ihr,imn,isc)
 
 c***********************************************************************
 c                         subroutine get_time
@@ -33,25 +32,14 @@ c  Change History:
 
 c*******************!***************************************************
 
-      integer       ihr,imn,isc
+      integer, intent(out) :: ihr,imn,isc
+      
+      integer :: hms(8)
 
-c     WATCOM specific code
-      integer  *  2 ih,im,is,i100th
+      call date_and_time(values=hms)
+      
+      ihr = hms(5)
+      imn = hms(6)
+      isc = hms(7)
 
-      call GETTIM (ih,im,is,i100th)
-      ihr=ih
-      imn=im
-      isc=is
-c     WATCOM specific code
-
-c     SUN SOLARIS specific code
-c     integer       iarray(3)
-
-c     call ITIME (iarray)
-c     ihr=iarray(1)
-c     imn=iarray(2)
-c     isc=iarray(3)
-c     SUN SOLARIS specific code
-
-      RETURN
       END      ! GET_TIME

@@ -1,5 +1,4 @@
-      SUBROUTINE GET_DATE
-     &          (iyear,imonth,iday)
+      SUBROUTINE GET_DATE(iyear,imonth,iday)
 
 c***********************************************************************
 c                         subroutine get_date
@@ -33,25 +32,13 @@ c  Change History:
 
 c*******************!***************************************************
 
-      integer       iyear,imonth,iday
+      integer, intent(out) :: iyear,imonth,iday
+      integer :: ymd(8)
 
-c     WATCOM specific code
-      integer  *  2 iy,im,id
+      call date_and_time(values=ymd)
+      
+      iyear=ymd(1)
+      imonth=ymd(2) 
+      iday = ymd(3)
 
-      call GETDAT (iy,im,id)
-      iyear =iy
-      imonth=im
-      iday  =id
-c     WATCOM specific code
-
-c     SUN SOLARIS specific code
-c     integer       iarray(3)
-c
-c     call ITIME (iarray)
-c     iyear =iarray(3)
-c     imonth=iarray(2)
-c     iday  =iarray(1)
-c     SUN SOLARIS specific code
-
-      RETURN
       END      ! GET_DATE
