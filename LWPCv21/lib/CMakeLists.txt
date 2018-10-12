@@ -49,5 +49,6 @@ target_compile_options(lwpc PRIVATE
                       -fdollar-ok  # lwpc_geo.cmn
                       -fdec-structure  # geo_coast_map.for
                       -fno-align-commons
+                      -fno-range-check # grf_cntr_flag.for
                       )
 
