@@ -23,4 +23,3 @@ c     Assumes inputs are all in dB.
 
       RETURN
       END      ! A_PLUS_B
-

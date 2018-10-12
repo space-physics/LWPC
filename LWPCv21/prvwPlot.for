@@ -188,7 +188,7 @@ c Change history:
 c*******************!***************************************************
 
 c     LWPC parameters
-      include      'sysStrct.cmn'
+      include      'sysstrct.cmn'
       include      'lwpc_cfg.cmn'
       include      'lwpc_lun.cmn'
 
@@ -201,7 +201,7 @@ c     Variables for preview plot
       character*  4 map_type(2),map_prjctn,n_model
       character*  8 archive,prgm_id
       character* 12 plt_orientation
-      character* 20 null,run_name,
+      character* 20 run_name,
      &              xmtr_id,path_id,area_id,map_id
       character* 40 prfl_id
       character* 80 case_id
@@ -222,6 +222,8 @@ c     Variables for preview plot
      &              lwf_dst_min,lwf_dst_max,lwf_dst_inc
 
       complex       eigen,tp,param2
+      
+      character, parameter :: null = char(0)
 
       common/lwpc_in/
      &              archive,file_id(3),prgm_id,
@@ -300,9 +302,8 @@ c     Miscellaneous
      &              print_lwf/0/,
 
      &              brsltn/15.,3./,
-     &              lwf_dst_min,lwf_dst_max,lwf_dst_inc/0.,20000.,20./,
+     &              lwf_dst_min,lwf_dst_max,lwf_dst_inc/0.,20000.,20./
 
-     &              null/z0/
 
 c     Get the location of the LWPC data
       call LWPC_DAT_LOC

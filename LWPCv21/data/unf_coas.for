@@ -17,8 +17,9 @@ c     writes unformatted file: coast$d.dat
       logical       eof
 
 
-      OPEN (15,file='coast$d.dat',status='unknown',form='unformatted')
-      OPEN (16,file='coast.fmt',  status='old')
+      OPEN (15,file='../data/coast$d.dat',status='unknown',
+     &      form='unformatted')
+      OPEN (16,file='../data/coast.fmt',  status='old')
 
       eof=.false.
       do while (.not.eof)
@@ -41,6 +42,4 @@ c     writes unformatted file: coast$d.dat
       end do
 19    CLOSE (15)
       CLOSE (16)
-      STOP
       END   ! UNFORMAT_COAST
-

@@ -1,4 +1,5 @@
-src/* linguist-vendored
+LWPCv21/* linguist-vendored
+archive/* linguist-vendored
 
 .gitattributes text eol=lf
 .gitignore text eol=lf

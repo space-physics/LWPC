@@ -87,7 +87,7 @@ c     Get the location of the LWPC data
       call LWPC_DAT_LOC
 
 c     Get command line
-      call GET_COMMAND_LINE (LenCMD,CMDLine)
+      lencmd = command_argument_count()
 
 c     CMDLine now contains the arguments of the command line;
 c     for this program we assume that there is only the input file name
@@ -99,8 +99,7 @@ c     and a print flag.
          OPEN (lwpcLOG_lun,file=file_name,status='unknown')
       else
          call DECODE_LIST_STR (CMDLine,3,NrCMD,CMDList)
-         file_name=CMDList(1)
-         nf=STR_LENGTH(file_name)
+         call get_command_argument(1, file_name, nf)
          if (NrCMD .eq. 2) then
             call DECODE_LIST_INT (CMDList(2),1,nl,mprint)
          else
@@ -113,6 +112,8 @@ c     and a print flag.
          file_name(nf+1:nf+4)='.log'
          OPEN (lwpcLOG_lun,file=file_name,status='unknown')
       end if
+      
+      print *, 'scan output file: ', file_name
 
 c     Initialize logical units
       lu_mds=lwpcMDS_lun ! storage of mode parameters   by LWPM
@@ -205,8 +206,8 @@ c     Initialize logical units
             end do
             CLOSE(lu_mds)
          else
-     &   if (file_name(n+1:n+3) .eq. 'lwf' .or.
-     &       file_name(n+1:n+3) .eq. 'LWF') then
+     &   if (file_name(n+1:n+3) == 'lwf' .or.
+     &       file_name(n+1:n+3) == 'LWF') then
 
             OPEN (lu_lwf,file=file_name,status='old',form='unformatted')
             if (nf .eq. 0) then

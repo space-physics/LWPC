@@ -821,7 +821,7 @@ c     Print date/time of run.
      &     bflag,area_id,range_max,
      &     n_model,n_month,n_day,n_year,n_UT,bandw,
      &     month,day,year,UT)
-
+      
       if (.not.more_data) then
 
 c        Print date/time of completion of run.
@@ -831,7 +831,7 @@ c        Print date/time of completion of run.
      &       '(/''Run finished on '',i2.2,''-'',i2.2,''-'',i4.4,
      &          '' at '',2(i2.2,'':''),i2.2)')
      &          c_month,c_day,c_year,c_hrs,c_mins,c_secs
-         STOP
+         STOP 'Normal run complete'
       else
 
 c        Set flags
@@ -955,8 +955,7 @@ c           set up a new set of paths.
 
 c           New file for storage of mode data
             OPEN (lu_mds,file=file_name,
-     &                   status='new',form='unformatted',
-     &                   iostat=iocheck,err=90)
+     &                   status='new',form='unformatted')
 
             archive='***'
             call SET_FILE_ID (lu_mds,prgm_id,file_id(1))
@@ -987,8 +986,7 @@ c           This is a re-start; find the next path to process.
 
 c           Old file for storage of mode data
             OPEN (lu_mds,file=file_name,
-     &                   status='old',form='unformatted',
-     &                   iostat=iocheck,err=90)
+     &                   status='old',form='unformatted')
 
 c           Go to the end of the mode data file.
             call LWP_EOF_MDS
@@ -1043,7 +1041,7 @@ c              Verify the op area
      &                     3x,a/3x,a/
      &                   ''These do not match the input.'')')
      &                     xmtridx,pathidx
-                  STOP
+                  error stop
                end if
 
                if (number_of_paths .eq. nrpath) then
@@ -1120,8 +1118,7 @@ c        Get signal vs distance
             file_name=root_file(:nfchr)//'.mds'
          end if
          OPEN (lu_mds,file=file_name,
-     &                status='old',form='unformatted',
-     &                iostat=iocheck,err=90)
+     &                status='old',form='unformatted')
 
 c        Get header data from the mode parameter file
          call READ_HDR
@@ -1141,8 +1138,7 @@ c        Get header data from the mode parameter file
             file_name=root_file(:nfchr)//'.lwf'
          end if
          OPEN (lu_lwf,file=file_name,
-     &                status='unknown',form='unformatted',
-     &                iostat=iocheck,err=90)
+     &                status='unknown',form='unformatted')
 
          archive='***'
          call SET_FILE_ID (lu_lwf,prgm_id,file_id(2))
@@ -1187,8 +1183,7 @@ c        Open the input LWF file
             file_name=root_file(:nfchr)//'.lwf'
          end if
          OPEN (lu_lwf,file=file_name,
-     &                status='old',form='unformatted',
-     &                iostat=iocheck,err=90)
+     &                status='old',form='unformatted')
 
 c        Make sure this file is compatible with generation of
 c        a grid file
@@ -1244,13 +1239,11 @@ c           Open the GRD file
      &          grd_format(1:1) .eq. 'a') then
 
                OPEN (lu_grd,file=file_name,
-     &                      status='unknown',form='formatted',
-     &                      iostat=iocheck,err=90)
+     &                      status='unknown',form='formatted')
             else
 
                OPEN (lu_grd,file=file_name,
-     &                      status='unknown',form='unformatted',
-     &                      iostat=iocheck,err=90)
+     &                      status='unknown',form='unformatted')
             end if
 
 c           Fill grid for this transmitter
@@ -1303,13 +1296,11 @@ c              Open the noise grid file
      &             grd_format(1:1) .eq. 'a') then
 
                   OPEN (lu_grd,file=file_name,
-     &                         status='unknown',form='formatted',
-     &                         iostat=iocheck,err=90)
+     &                         status='unknown',form='formatted')
                else
 
                   OPEN (lu_grd,file=file_name,
-     &                         status='unknown',form='unformatted',
-     &                         iostat=iocheck,err=90)
+     &                         status='unknown',form='unformatted')
                end if
 
                call OPA_NOISE_GRID
@@ -1329,12 +1320,6 @@ c              Open the noise grid file
       end if
       go to 10
 
-c     Error exits
-90    write(lwpcLOG_lun,
-     &    '(/''ERROR: '',
-     &       ''I/O error '',i3,'' occurred trying to open '',
-     &       ''file: '',a)')
-     &         iocheck,file_name(:len_trim(file_name))
 
-      END      ! LWPM
+      END program     ! LWPM
 

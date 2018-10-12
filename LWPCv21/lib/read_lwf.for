@@ -149,7 +149,7 @@ c*******************!***************************************************
 c     LWPC parameters
       include      'lwpc_lun.cmn'
 
-      character*  3 label
+      character, parameter :: label='zyx'
       logical       begin_file,end_file
       integer       lu_lwf,print_lwf,
      &              mxprm,nrprm,nrcmp,nrpts,nrlwf,
@@ -158,7 +158,6 @@ c     LWPC parameters
      &              sgmnt(mxps,mxsgmnt),param(mxprm),
      &              xy(mxpts),amp_lwf(mxpts),phs_lwf(mxpts)
 
-      data          label/'zyx'/
 
 
       if (begin_file) then
@@ -233,8 +232,7 @@ c           Output vs range
 
 c           Output at receiver only
             if (ncmp .eq. 1) then
-               write(lwpcLOG_lun,
-     &             '(''E  dist   amplitude  phase  ''))')
+              write(lwpcLOG_lun,'(''E  dist   amplitude  phase  ''))')
             end if
             write(lwpcLOG_lun,
      &          '(a,f7.0,2f10.4)')
@@ -256,6 +254,5 @@ c     End of file
 99    end_file=.true.
       nlwf=0
 
-      RETURN
       END      ! READ_LWF
 

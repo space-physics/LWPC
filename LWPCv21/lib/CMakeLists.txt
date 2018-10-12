@@ -7,16 +7,12 @@ include_directories(../include)
 add_library(liblwpc 
 almnac.for a_over_b.for a_plus_b.for a_xfer_b.for 
 clineq.for 
-# close_fordrive.for 
 decode_a_noise.for decode_control_data.for decode_date.for decode_file_name.for decode_ionosphere.for decode_list_flt.for decode_list_int.for decode_list_str.for decode_map_area.for decode_op_area.for decode_plotter.for decode_rx_data.for decode_time.for decode_tx_data.for 
 erfc.for 
 flush_unit.for 
-gcdbr2.for gcdbr.for 
-geo_border.for geo_cgm.for geo_chi_map.for geo_cntr.for geo_coast_map.for geo_cond_map.for geo_coord.for geo_defs.for geo_dip_map.for geo_label.for geo_opa_border.for geo_path_radials.for geo_qoval_map.for geo_terminator.for 
-get_command_line.for get_date.for get_delimiter.for get_map.for get_opa.for get_random.for get_time.for get_xmtr.for 
-grf_begin.for grf_border.for grf_cntr_cell.for grf_cntr_col.for grf_cntr_edge.for grf_cntr_fill.for grf_cntr_flag.for grf_cntr.for grf_cntr_holes.for grf_cntr_join.for grf_cntr_line.for grf_cntr_row.for grf_cntr_search.for grf_cntr_trace.for grf_color.for grf_curve.for grf_done.for grf_draw.for grf_fill_index.for grf_fill_rect.for grf_limits.for grf_move.for grf_number.for grf_origin.for grf_poly_fill.for grf_string.for grf_symbol.for 
-ground.for 
-# hpgl_begin.for hpgl_color.for hpgl_done.for hpgl_draw.for hpgl_fill_rect.for hpgl_poly_fill.for hpgl_string.for 
+gcdbr2.for gcdbr.for
+get_command_line.for get_date.for get_delimiter.for get_map.for get_opa.for get_random.for get_time.for get_xmtr.for
+ground.for  
 hrs_to_hhmm.for 
 land_sea.for leap_year.for 
 lw_fast_mc.for lw_full_mc.for lw_htgain.for 
@@ -30,7 +26,6 @@ month_name.for month_number.for
 newmag.for noise_itsn.for noise_ntia.for 
 opa_interpolate.for opa_noise_grid.for opa_read_lwf.for opa_set_up_grid.for opa_signal_grid.for 
 open_dat.for 
-plt_area_size.for plt_cntr.for plt_cntr_label.for plt_cntr_n.for plt_cntr_range.for plt_cntr_s.for plt_cntr_si.for plt_cntr_sj.for plt_cntr_sn.for plt_excd.for plt_joint_cntr.for plt_lnp_to_grd.for plt_lwf_avg.for plt_lwf_border.for plt_lwf.for plt_lwf_label.for plt_map_indices.for plt_read_noise.for plt_read_signal.for plt_rx_model.for 
 prfl_chi_exp.for prfl_chi_tbl.for prfl_ennu.for prfl_exp.for prfl_gtbl.for prfl_hgts.for prfl_htbl.for prfl_init_table.for prfl_lwpm.for prfl_read_table.for prfl_rexp.for prfl_rtbl.for prfl_specification.for 
 prob_to_sigma.for 
 read_c_grd.for read_grd.for read_hdr.for read_lwf.for read_mds.for 
@@ -44,11 +39,28 @@ xc_add.for xc_mdhnkl.for xc_norme.for
 xlineq.for
 )
 
+# -fno-automatic is necessary to avoid read_lwf error
 target_compile_options(liblwpc PRIVATE 
                       -std=legacy
-                      -fdollar-ok  # lwpc_geo.cmn
-                      -fdec-structure  # geo_coast_map.for
+                      -fdec
+                      -fno-automatic
                       -fno-align-commons
-                      -fno-range-check # grf_cntr_flag.for
                       )
 
+
+if(WIN32)
+  add_library(plt
+  close_fordrive.for  
+  geo_border.for geo_cgm.for geo_chi_map.for geo_cntr.for geo_coast_map.for geo_cond_map.for geo_coord.for geo_defs.for geo_dip_map.for geo_label.for geo_opa_border.for geo_path_radials.for geo_qoval_map.for geo_terminator.for 
+  grf_begin.for grf_border.for grf_cntr_cell.for grf_cntr_col.for grf_cntr_edge.for grf_cntr_fill.for grf_cntr_flag.for grf_cntr.for grf_cntr_holes.for grf_cntr_join.for grf_cntr_line.for grf_cntr_row.for grf_cntr_search.for grf_cntr_trace.for grf_color.for grf_curve.for grf_done.for grf_draw.for grf_fill_index.for grf_fill_rect.for grf_limits.for grf_move.for grf_number.for grf_origin.for grf_poly_fill.for grf_string.for grf_symbol.for 
+  hpgl_begin.for hpgl_color.for hpgl_done.for hpgl_draw.for hpgl_fill_rect.for hpgl_poly_fill.for hpgl_string.for
+  plt_area_size.for plt_cntr.for plt_cntr_label.for plt_cntr_n.for plt_cntr_range.for plt_cntr_s.for plt_cntr_si.for plt_cntr_sj.for plt_cntr_sn.for plt_excd.for plt_joint_cntr.for plt_lnp_to_grd.for plt_lwf_avg.for plt_lwf_border.for plt_lwf.for plt_lwf_label.for plt_map_indices.for plt_read_noise.for plt_read_signal.for plt_rx_model.for)
+
+  target_compile_options(plt PRIVATE 
+                         -fdec -fno-automatic
+                        -fno-align-commons -fno-range-check)
+
+  target_link_libraries(plt PRIVATE liblwpc pltsys)
+
+  add_library(pltsys sys_print_begin.c sys_print_done.c)
+endif(WIN32)

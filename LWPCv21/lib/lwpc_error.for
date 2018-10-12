@@ -43,7 +43,7 @@ c  Change History:
 c     21 Oct 95     Changed to get the LOG unit from LWPC_LUN.CMN.
 c
 c*******************!***************************************************
-
+      use, intrinsic:: iso_fortran_env, only: stderr=>error_unit
 c     LWPC parameters
       include      'lwpc_lun.cmn'
 
@@ -53,7 +53,9 @@ c     Get sys error defintions
 
       character*(*) error_type
       character*(*) error_msg
-      integer       str_length
+      
+      write (stderr,*) error_type(1:len_trim(error_type)), 
+     &    error_msg(1:len_trim(error_msg))
 
 
       if (program_type(1:2) .eq. 'SY' .or.
@@ -72,16 +74,16 @@ c            0 defines an informational message only
              sys_error_level=0
          end if
 
-         error stop error_msg(:STR_LENGTH(error_msg))
+         error stop error_msg(:len_trim(error_msg))
  
       else
 
 c        This is a text based program;
 c        write messages to standard outout
          WRITE(lwpcLOG_lun,'(a)')
-     &         error_type(1:STR_LENGTH(error_type))
+     &         error_type(:len_trim(error_type))
          WRITE(lwpcLOG_lun,'(a)')
-     &         error_msg (1:STR_LENGTH(error_msg ))
+     &         error_msg (:len_trim(error_msg ))
 
          if (error_type(1:1) .eq. 'E' .or.
      &       error_type(1:1) .eq. 'e') then

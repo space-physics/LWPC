@@ -1,5 +1,5 @@
-file-mds    Output\
-file-lwf    Output\
+file-mds    ../output/
+file-lwf    ../output/
 case-id     OMEGA coverage of the Mediterranean
   Name the output files
 tx          bearings
@@ -20,4 +20,4 @@ lwf-vs-dist 5000
 print-lwf   2
 start
 quit
-
+

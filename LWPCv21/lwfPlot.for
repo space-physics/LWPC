@@ -180,7 +180,7 @@ c                   to execute the program
 c*******************!***************************************************
 
 c     I/O handling
-      include      'sysStrct.cmn'
+      include      'sysstrct.cmn'
 
 c     Plotter parameters
       character* 12 plt_orientation
@@ -274,8 +274,7 @@ c     Program parameters
      &              print_lwf/0/,
      &              phs_plot/.false./
 
-      character*120 null
-      data          null/z0/
+      character, parameter :: null = char(0)
 
 c     The parameter next_graph comes from sysStrct.cmn
 c

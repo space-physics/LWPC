@@ -320,23 +320,24 @@ c*******************!***************************************************
      &              mxlvl=101)
 
 c     LWPC parameters
-      include      'sysStrct.cmn'
+      include      'sysstrct.cmn'
       include      'lwpc_cfg.cmn'
       include      'lwpc_lun.cmn'
 
       include      'lwpc_lun.ini'
 
 c     Variables for grdPlot
+      character, parameter :: null = char(0)
       character*  1 delimiter(3)
       character*  1 zyx,N_S,E_W
       character*  3 n_mnth_nam
       character*  4 map_type(2),map_prjctn,n_model,
      &              grid_status
-      character*  5 rx_model
+      character(5) :: rx_model
       character*  8 grd_format
       character* 10 antenna,antenna_list(4)
       character* 12 plt_orientation
-      character* 20 null,run_name,
+      character* 20 run_name,
      &              xmtr_id,area_id,map_id,
      &              string_list(10),
      &              graf_lbl,
@@ -407,7 +408,6 @@ c     Variables for grdPlot
      &              n_model/'ntia'/,
      &              n_mnth_num,n_day,n_year,n_UT/4*0/,bandw/1000./,
 
-     &              rx_model/z0/,
 
      &              nclvl/0/,cntr_range/-60.,-99.,3./
      &              nplvl/1/,plevel/50.,90.,99.,4*0./,
@@ -421,7 +421,7 @@ c     Variables for grdPlot
      &              chi_max,chi_min,chi_inc/96.,90.,2./,
      &              chi_label,chi_line/.false.,0/,
 
-     &              antenna/z0/,depth/0./,
+     &              depth/0./,
 
      &              antenna_list/'BRA-34','BRA-34-Mod',
      &                           'OE-315','AT-317F'/,
@@ -429,9 +429,8 @@ c     Variables for grdPlot
      &                           29.2,23.2,18.7,18.6,17.1,15.8,
      &                           27.2,19.5,18.4,16.2,15.9,15.7,
      &                           11.5, 9.6, 6.7, 4.0, 2.9, 1.3,
-     &                           20.2,14.5, 9.5, 9.8, 8.2, 6.7/,
+     &                           20.2,14.5, 9.5, 9.8, 8.2, 6.7/
 
-     &              null/z0/
 
 c     The parameter next_graph comes from sysStrct.cmn
 c
@@ -1078,7 +1077,7 @@ c           Open the GRD file
 
                OPEN (lu_grd,file=file_name,
      &                      status='old',form='unformatted',
-     &                      access='sequential',recordtype='fixed',
+     &                      access='sequential',!recordtype='fixed',
      &                      iostat=iocheck,err=900,action='read')
             else
      &      if (grd_format(1:1) .eq. 'A' .or.
@@ -1291,7 +1290,7 @@ c        Open the Grid file
 
             OPEN (lu_grd,file=file_name,
      &                   status='old',form='unformatted',
-     &                   access='sequential',recordtype='fixed',
+     &                   access='sequential',!recordtype='fixed',
      &                   iostat=iocheck,err=900,action='read')
          else
      &   if (grd_format(1:1) .eq. 'A' .or.

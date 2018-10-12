@@ -1,3 +1,5 @@
+output/
+*.log
 build/
 # Prerequisites
 *.d

@@ -1,6 +1,6 @@
-file-mds    Output\
-file-lwf    Output\
-file-grd    Output\
+file-mds    ../output/
+file-lwf    ../output/
+file-grd    ../output/
 case-id     Jammer coverage of the Mediterranean
   Name the files
 tx          jam
@@ -14,4 +14,4 @@ op-area     Mediterranean 30 10 45 -45
 a-noise     ntia July 18 1000
 start
 quit
-
+

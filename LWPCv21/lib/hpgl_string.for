@@ -52,7 +52,7 @@ c*******************!***************************************************
       character*  2 justify
       character*(*) string
 
-      character*  1 etx/z03/
+      character, parameter :: etx = char(3)
       character*245 out_string
       integer       str_length
 

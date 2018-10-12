@@ -217,4 +217,3 @@ c           Set previous index
 
       RETURN
       END      ! PRFL_RTBL
-
