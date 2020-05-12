@@ -126,5 +126,3 @@ void sys_print_begin (void)
 
     return;
 }
-
-

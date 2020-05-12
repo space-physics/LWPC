@@ -3,7 +3,7 @@ __pycache__/
 *.egg-info/
 output/
 *.log
-build/
+build*/
 # Prerequisites
 *.d
 

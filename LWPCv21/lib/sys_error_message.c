@@ -29,4 +29,3 @@ void sys_error_message (void)
     exit (10);
   }
 }
-

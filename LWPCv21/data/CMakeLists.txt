@@ -1,7 +1,3 @@
-cmake_minimum_required (VERSION 3.7)
-project(LWPC Fortran C)
-enable_testing()
-
 add_executable(unf_cond unf_cond.for)
 target_compile_options(unf_cond PRIVATE -fdollar-ok)
 

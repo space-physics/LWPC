@@ -5,7 +5,7 @@ import lwpc
 
 def main():
     p = ArgumentParser()
-    p.add_argument('stem', help='output filestem')
+    p.add_argument("stem", help="output filestem")
     p = p.parse_args()
 
     lwfhdr = lwpc.lwf_header(p.stem)
@@ -15,5 +15,5 @@ def main():
     print(lwfdat)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
