@@ -53,8 +53,8 @@ c     Get sys error defintions
 
       character*(*) error_type
       character*(*) error_msg
-      
-      write (stderr,*) error_type(1:len_trim(error_type)), 
+
+      write (stderr,*) error_type(1:len_trim(error_type)),
      &    error_msg(1:len_trim(error_msg))
 
 
@@ -75,7 +75,7 @@ c            0 defines an informational message only
          end if
 
          error stop error_msg(:len_trim(error_msg))
- 
+
       else
 
 c        This is a text based program;
@@ -92,7 +92,7 @@ c           This is a fatal ERROR, force termination with a trace back
             temp=1.
             result=LOG(-1.*temp)
             CLOSE(lwpcLOG_lun)
-            error STOP
+            error STOP error_msg (:len_trim(error_msg ))
          end if
       end if
 

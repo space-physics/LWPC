@@ -238,6 +238,3 @@ float sys_string (float xx, float yy, float height, char * char_string,
 
    return ((float)wth/graphics.units[1]);
 }
-
-
-

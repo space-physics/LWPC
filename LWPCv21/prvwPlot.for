@@ -1,6 +1,6 @@
-      SUBROUTINE FORDRIVE
+!      SUBROUTINE FORDRIVE
 
-c     PROGRAM prvwPlot
+      PROGRAM prvwPlot
 
 c***********************************************************************
 
@@ -222,7 +222,7 @@ c     Variables for preview plot
      &              lwf_dst_min,lwf_dst_max,lwf_dst_inc
 
       complex       eigen,tp,param2
-      
+
       character, parameter :: null = char(0)
 
       common/lwpc_in/

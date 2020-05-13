@@ -1,6 +1,6 @@
-      SUBROUTINE FORDRIVE
+!      SUBROUTINE FORDRIVE
 
-c     PROGRAM    grdPlot
+      PROGRAM    grdPlot
 
 c***********************************************************************
 

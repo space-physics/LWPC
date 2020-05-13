@@ -1,6 +1,6 @@
-      SUBROUTINE FORDRIVE
+!      SUBROUTINE FORDRIVE
 
-c     PROGRAM    LWF_PLOT
+      PROGRAM    LWF_PLOT
 
 c***********************************************************************
 

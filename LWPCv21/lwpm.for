@@ -1,5 +1,5 @@
       PROGRAM LWPM
-
+      use, intrinsic :: iso_fortran_env, only : stderr=>error_unit
 c Long Wave Propagation Model
 
 c Generates mode parameters along propagation paths. Uses the mode data
@@ -821,7 +821,7 @@ c     Print date/time of run.
      &     bflag,area_id,range_max,
      &     n_model,n_month,n_day,n_year,n_UT,bandw,
      &     month,day,year,UT)
-      
+
       if (.not.more_data) then
 
 c        Print date/time of completion of run.
@@ -1034,7 +1034,7 @@ c              Verify the op area
                if (xmtr_id .ne. xmtridx .or.
      &             path_id .ne. pathidx) then
 
-                  write(lwpcLOG_lun,
+                  write(stderr, !lwpcLOG_lun,
      &                '(/''ERROR: ''/
      &                   ''Existing MDS file has data for the '',
      &                   ''following transmitter and op area.''/
